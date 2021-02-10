@@ -1,5 +1,6 @@
 ﻿#include "Widget.h"
 #include <QPushButton>
+#include "button.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -22,6 +23,26 @@ Widget::Widget(QWidget *parent)
     btn->setStyleSheet("QPushButton{ background-color:red;}\
                         QPushButton:hover{ background-color:green;}\
                         QPushButton:pressed{ background-color:rgba(100,155,113,1);}");
+
+    ////////////这里是自制类////////////
+
+    ////////////这里是自制按钮类////////////
+    Button *btn1 = new Button;
+    btn1->setText("不带参数自制按钮类对象");
+    btn1->setParent(this);
+    btn1->move(100,0);
+    Button *btn2 = new Button(this,"带参数自制按钮类对象");
+    btn2->move(200,0);
+    btn1->show();
+    btn2->show();
+
+    //做个对比
+    QPushButton *btn3 = new QPushButton("Qt自带单参数按钮类对象",this);
+    btn3->move(0,500);
+    btn3->show();
+
+
+    ////////////这里是自制普通类////////////
 
 
 //   Student *stu = new Student;

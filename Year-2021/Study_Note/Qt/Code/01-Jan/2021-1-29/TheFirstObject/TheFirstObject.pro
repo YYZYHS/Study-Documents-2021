@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Student.cpp \
+    button.cpp \
     main.cpp \
     Widget.cpp
 
 HEADERS += \
     Student.h \
-    Widget.h
+    Widget.h \
+    button.h
 
 TRANSLATIONS += \
     TheFirstObject_zh_CN.ts
