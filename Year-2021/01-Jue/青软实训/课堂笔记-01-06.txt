@@ -1,0 +1,146 @@
+1、课程名称:《物联网工程综合实训》
+2、做什么项目：《飞鸽传书》项目（局域网内的文件传输工具）
+3、项目所涉及知识点：
+     1)网络编程、套接字编程、socket编程，tcp/ip这块的知识点；
+     2）C/C++相关知识点；非常清楚一点是:什么是面向对象、什么是面向过程？
+     3）文件读写这块知识点；（大文件操作？？）
+     4）多线程编程这块知识点；（多线程和多进程两者关系，区别？）
+==========================================================
+学习方法：
+1、勤记笔记！~（写博客的方式）
+2、多查资料
+3、独立自主
+4、多敲代码
+刷题的？
+==========================================================
+今天的内容：是讲C语言？  Linux下的C编程。。。熟悉Linux操作系统
+
+熟悉Linux操作系统之前，学会安装Linux操作系统
+
+学习的Linux操作系统是Ubuntu系统
+
+Linux操作系统：Ubuntu、centOS、Redhat、uCOS-III、安卓系统
+
+Linux命令是一致的。。。
+
+Linux有无命令不Linux
+
+Linux系统的安装：
+1、下载你所需要的Linux系统的镜像文件  .iso文件
+2、vmwareworkstation ->第2个步骤：安装光盘程序镜像文件 （系统快速安装，系统所有的配置都是默认的）
+
+Linux有一个根文件 /  
+
+Linux的命令：
+cd：到某个地方
+ls：查看当前文件名
+ping:查看网络是否通
+ifconfig:查看网络信息
+apt-get install 软件名：安装软件
+su：切换账号
+
+sudo passwd：修改账户密码
+
+sudo：就相当于window下以管理员权限操作
+Ubuntu系统里，有2个账户：普通用户(qst)和管理员用户（root）
+
+使用虚拟机运行Linux操作系统的话：
+1、保证你电脑里的虚拟服务处于开启状态
+2、运行->services.msc
+
+Linux操作系统有个补齐的功能，采用tab键来操作
+
+Linux下怎么运行我的C语言程序
+1、采用vi/vim这个文本编辑工具
+2、vim  helloword.c
+3、按"i"键进入插入模式（看左下角是否变成插入模式）
+4、程序编辑完成之后，按"Esc"键，进入编辑模式（可以复制粘贴代码，命令）
+5、按":"键进入命令模式（看左下角是否有:标识）
+6、输入"wq""x"等保存文件退出,"q!"不保存文件退出
+7、采用编译工具（gcc、g++等），gcc  helloword.c,会生产一个a.out（默认）文件
+8、运行程序，./a.out运行，前面加一个./
+
+
+回归到项目来：
+综合实训：突出点是综合，两个系统之间？
+
+Linux里写服务器；window里写客户端。。。  
+
+C/S架构。。。
+
+===================================
+#include <stdio.h>
+
+int main(int argc, char* argv[])
+{
+	printf("helloword\n");
+	printf("argc =  %d\n", argc);
+	printf("argv[0] = %s\n", argv[0]);
+	printf("argv[1] = %s\n", argv[1]);
+	printf("argv[2] = %s\n", argv[2]);
+	return 0;
+}
+
+=====================================================
+qst@qst:~$ ls -l
+总用量 658432
+drwxrwxr-x  2 qst  qst       4096 12月 18 16:12 111
+第一个字符表示该文件的类型
+rwxrwxr-x 九个字符表示这个文件的权限
+r读（4） w写（2）  x执行（1）
+rwx ->7   
+改变权限： chmod  777 test.c   //  
+	   chmod -x  test.c
+============================================
+终端操作：ctrl+alt+t 打开一个终端
+	ctrl+shift+t  打开终端分页
+===========================================
+qst@qst:~$ kill -l
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
+21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
+31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
+43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
+48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
+53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
+58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
+63) SIGRTMAX-1	64) SIGRTMAX	
+
+=========================================
+Linux操作系统是一个多用户操作系统
+
+=========================================
+Linux系统中提供了好几种不同的shell命令解释器，如sh、ash、bash等。
+
+shell脚本文件一开头要写上所采用的命名解释器 （#! /bin/bash）
+shell脚本文件运行的时候：
+1、直接运行脚本文件： ./test.sh
+2、采用命令解释器来运行脚本文件：  bash  test.sh   sh test.sh
+    [注意的是采用命令解释器来运行的话，你的shell脚本文件里的第一句就没用了]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

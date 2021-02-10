@@ -1,0 +1,135 @@
+1、shell脚本怎么运行？
+    两种方法：1种是直接运行脚本文件；2是采用脚本解释器来运行脚本文件
+2、shell脚本文件后缀名是.sh
+3、shell脚本文件开头第一句话要写 #！/bin/bash  （必须要写的）
+4、shell脚本的变量怎么命名   name=12324  （=两边没有空格）
+5、shell脚本输入是什么命令？  read 来获取键盘里输入信息的
+6、shell脚本输出是什么命令？  echo 把信息显示屏幕上面的
+7、Linux的环境变量？  一般情况下环境变量都是大写字母
+8、怎么设置环境变量    export关键字
+
+Linux常用命令:cd、ls、mkdir、touch、chmod、kill。。。。（自己去熟悉和整理）
+
+command1 && command2  （与）
+&&左边命令（command1）执行成功(即返回0）shell才执行&&右边的命令（command2）
+
+command1 || command2
+||左边的命令（command1）未执行成功(即返回非0）shell才执行||右边的命令（command2）
+
+shell的控制语句：如果你是if开头的，必须以fi收尾    
+		 如果你是case开头的，必须以esac收尾
+=====================================================
+#! /bin/bash
+echo  $0
+echo  $1
+echo $2
+
+结果：
+qst@qst:~/shell$ ./test.sh  11 22
+./test.sh
+11
+22
+==============================================
+declare -i s 代表强制把s变量当做int型参数运算
+
+break：跳出循环、continue：跳出当前循环，继续执行下一个循环
+============================================
+做开发的时候，有一个需要第三方库的情况下
+
+#include <stdio.h>
+
+采用opencv视频编解码   //手动添加第三方opencv库
+
+-lname 链接库为name的库 ：后面学到多线程， gcc  aaa.c -lpthread
+
+===========================================================
+gcc和g++编译器的编译过程：
+1、预处理
+2、编译
+3、汇编
+4、链接
+
+gcc  hello.c   ->包含了上述四个过程。。
+
+gcc -E hello.c -o hello.i 预处理
+gcc -S hello.i -o hello.s 编译
+gcc -c hello.s -o hello.o 汇编
+gcc hello.o -o hello_elf 链接
+==============================================================
+程序运行的时候，缺少库文件，你就把库文件和可执行文件放在一起打包
+
+gcc编译的时候，有4个步骤
+
+假如有主文件testmian.c 还有其他4个文件 a.c  b.c  c.c d.c 
+
+a.c  -> a.o    b.c -> b.o    c.c->c.o     d.c->d.o
+
+如果我们改动了b.c文件的话，我们这边只需要重新汇编一下b.c文件即可，其他文件不懂
+
+========================================================
+qst@qst:~/maketest$ make
+gcc -c  main.c -o main.o
+gcc -c printf1.c -o printf1.o
+gcc main.o   printf1.o  -o main 
+【修改main.c文件后运行结果】
+qst@qst:~/maketest$ make
+gcc -c  main.c -o main.o
+gcc main.o   printf1.o  -o main 
+【结论】不难发现printf1文件没有修改的话，不需要重新进行汇编操作
+
+===========================================================
+自定义变量语法
+定义变量：变量名=变量值
+引用变量：$(变量名)或${变量名}
+makefile的变量名:
+makefile变量名可以以数字开头
+变量是大小写敏感的
+变量一般都在makefile的头部定义
+变量几乎可在makefile的任何地方使用
+========================================================
+make传递参数示例：
+qst@qst:~/maketest$ make cc=g++
+g++  main.o printf1.o -o main 
+qst@qst:~/maketest$ make clean
+rm  main
+qst@qst:~/maketest$ make 
+gcc  main.o printf1.o -o main 
+====================================================
+makefile文件里添加有@的标识 （@echo $(PWD)）
+qst@qst:~/maketest$ make clean
+rm  main
+echo /home/qst/maketest
+/home/qst/maketest
+makefile文件里没有@的标识 （echo $(PWD)）
+qst@qst:~/maketest$ make clean
+rm  main
+echo /home/qst/maketest
+/home/qst/maketest
+【@，执行，只显示结果】
+=============================================
+$@ 目标名
+$* 目标名中除含扩展名的部分
+扩展名包括：S、s、C、c、cc、cp、cpp、o、a等
+$< 依赖文件列表中的第一个文件
+$^ 依赖文件列表中除去重复文件的部分
+$+ 依赖文件列表中所有的文件
+$? 依赖文件列表中比目标文件新的文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

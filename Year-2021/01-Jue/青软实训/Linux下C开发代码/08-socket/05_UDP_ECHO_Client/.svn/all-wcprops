@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/4.Net_Programme/!svn/ver/70/%E8%AF%BE%E7%A8%8B%E4%BB%A3%E7%A0%81/%E5%AD%A6%E7%94%9F%E7%89%88/05_UDP_ECHO_Client
+END
+udp_echo_client.c
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/4.Net_Programme/!svn/ver/70/%E8%AF%BE%E7%A8%8B%E4%BB%A3%E7%A0%81/%E5%AD%A6%E7%94%9F%E7%89%88/05_UDP_ECHO_Client/udp_echo_client.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/4.Net_Programme/!svn/ver/44/%E8%AF%BE%E7%A8%8B%E4%BB%A3%E7%A0%81/%E5%AD%A6%E7%94%9F%E7%89%88/05_UDP_ECHO_Client/Makefile
+END

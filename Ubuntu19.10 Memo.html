@@ -1,0 +1,529 @@
+<!DOCTYPE html><html><head>
+      <title>Ubuntu19.10 Memo</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/yyz/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.15/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="pratical-training-memoubuntu1910">Pratical Training Memo&#xFF08;Ubuntu19.10&#xFF09;</h1>
+
+<ul>
+<li><a href="#pratical-training-memoubuntu1910">Pratical Training Memo&#xFF08;Ubuntu19.10&#xFF09;</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85%E8%B0%B7%E6%AD%8C%E8%BE%93%E5%85%A5%E6%B3%95">&#x5B89;&#x88C5;&#x8C37;&#x6B4C;&#x8F93;&#x5165;&#x6CD5;</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95">&#x5B89;&#x88C5;&#x641C;&#x72D7;&#x8F93;&#x5165;&#x6CD5;</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85visual-studio-code">&#x5B89;&#x88C5;Visual Studio Code</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9ubuntu%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E7%A7%B0">&#x4FEE;&#x6539;Ubuntu&#x8BA1;&#x7B97;&#x673A;&#x540D;&#x79F0;</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85gcc48">&#x5B89;&#x88C5;gcc4.8</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85vim">&#x5B89;&#x88C5;vim</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8">&#x5B89;&#x88C5;&#x4EA4;&#x53C9;&#x7F16;&#x8BD1;&#x5668;</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85tslib">&#x5B89;&#x88C5;tslib</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85qt-creator">&#x5B89;&#x88C5;Qt Creator</a></li>
+<li><a href="#qt%E5%BA%93%E6%BA%90%E7%A0%81">Qt&#x5E93;&#x6E90;&#x7801;</a>
+<ul>
+<li><a href="#qt-pc">Qt-PC</a></li>
+<li><a href="#qt-arm">Qt-ARM</a></li>
+</ul>
+</li>
+<li><a href="#ffmpeg">ffmpeg</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85ffmpeg">&#x5B89;&#x88C5;ffmpeg</a></li>
+<li><a href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%85%8D%E7%BD%AEffmpeg">&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x914D;&#x7F6E;ffmpeg</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E5%AE%89%E8%A3%85%E8%B0%B7%E6%AD%8C%E8%BE%93%E5%85%A5%E6%B3%95">&#x5B89;&#x88C5;&#x8C37;&#x6B4C;&#x8F93;&#x5165;&#x6CD5;</h2>
+
+<p><a href="https://jingyan.baidu.com/article/49711c618fe633fa441b7c38.html">Ubuntu&#x4E0A;&#x5982;&#x4F55;&#x5B89;&#x88C5;&#x8C37;&#x6B4C;&#x8F93;&#x5165;&#x6CD5;</a></p>
+<p><a href="https://blog.csdn.net/chan70707/article/details/82980499">ubuntu&#x5B89;&#x88C5;&#x8C37;&#x6B4C;&#x8F93;&#x5165;&#x6CD5;</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx-googlepinyin
+<span class="token comment"># &#x914D;&#x7F6E;Fcitx</span>
+<span class="token comment"># &#x8BBE;&#x7F6E;-&gt;&#x533A;&#x57DF;&#x4E0E;&#x8BED;&#x8A00;-&gt;&#x7BA1;&#x7406;&#x5DF2;&#x5B89;&#x88C5;&#x7684;&#x8BED;&#x8A00;</span>
+<span class="token comment"># &#x8BED;&#x8A00;&#x652F;&#x6301;-&gt;&#x8BED;&#x8A00;-&gt;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x6CD5;&#x7CFB;&#x7EDF;&#xFF1A;(IBus-&gt;fcitx)</span>
+<span class="token function">sudo</span> <span class="token function">reboot</span>
+fcitx-configtool
+<span class="token comment"># &#x67E5;&#x770B;&#x5217;&#x8868;&#x91CC;&#x9762;&#x6709;&#x6CA1;&#x6709;googlepinyin</span>
+<span class="token comment"># &#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;+&#x53F7;</span>
+<span class="token comment"># &#x53D6;&#x6D88;&#x590D;&#x9009;&#x6846;&#xFF1A;Only Show Current Language</span>
+<span class="token comment"># &#x8F93;&#x5165;&#x6846;(Search Input Language)&#x8F93;&#x5165;googlepinyin</span>
+<span class="token comment"># &#x4E0D;&#x8981;&#x5C06;googlepinyin&#x653E;&#x5728;Input Method&#x7684;&#x7B2C;&#x4E00;&#x4F4D;</span>
+<span class="token function">sudo</span> <span class="token function">reboot</span>
+</pre><p><a href="https://blog.csdn.net/arackethis/article/details/42154029">Linux&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8F93;&#x5165;&#x6CD5;&#xFF08;Google&#x62FC;&#x97F3;&#x8F93;&#x5165;&#x6CD5;&#xFF09;</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> remove fcitx*
+<span class="token comment"># &#x5220;&#x9664;&#x4E4B;&#x524D;&#x5B89;&#x88C5;&#x5931;&#x8D25;&#x7684;&#x5185;&#x5BB9;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove
+<span class="token comment"># &#x5220;&#x9664;&#x4F9D;&#x8D56;&#x5E93;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> remove ibus
+<span class="token comment"># &#x5220;&#x9664;&#x9ED8;&#x8BA4;&#x5B89;&#x88C5;&#x7684;ibus</span>
+<span class="token comment"># &#x6DFB;&#x52A0;fcitx&#x7684;nightlyPPA&#x3002;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</span>
+<span class="token comment"># &#x65B9;&#x6CD5;&#x4E00;&#xFF1A; &#x5728;&#x6E90;&#x4E2D;&#x6DFB;&#x52A0;nightly&#x6E90;&#x3002;</span>
+<span class="token function">sudo</span> gedit /etc/apt/sources.list
+<span class="token comment"># &#x52A0;&#x5165;&#x4EE5;&#x4E0B;&#x4E24;&#x884C;&#xFF1A;</span>
+<span class="token comment"># deb http://ppa.launchpad.net/fcitx-team/nightly/ubuntu quantal main</span>
+<span class="token comment"># deb-src http://ppa.launchpad.net/fcitx-team/nightly/ubuntu quantal main</span>
+<span class="token comment"># &#x7136;&#x540E;&#xFF1A;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token comment"># &#x65B9;&#x6CD5;&#x4E8C;&#xFF1A; PPA&#xFF0C;&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;&#xFF1A;</span>
+<span class="token function">sudo</span> add-apt-repository ppa:fcitx-team/nightly
+<span class="token comment"># &#x5B89;&#x88C5;fcitx&#xFF0C;Google&#x8F93;&#x5165;&#x6CD5;&#xFF0C;&#x4E91;&#x8F93;&#x5165;&#x6CD5;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx fcitx-config-gtk fcitx-sunpinyin fcitx-googlepinyin fcitx-module-cloudpinyin
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx-table-all
+<span class="token comment"># &#x8BBE;&#x7F6E;fcitx&#x4E3A;&#x9ED8;&#x8BA4;&#x8F93;&#x5165;&#x6CD5;</span>
+<span class="token function">sudo</span> im-switch -s fcitx -z default
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95">&#x5B89;&#x88C5;&#x641C;&#x72D7;&#x8F93;&#x5165;&#x6CD5;</h2>
+
+<p><a href="https://blog.csdn.net/xiaxuesong666/article/details/75127425">ubuntu16.04&#x5B89;&#x88C5;&#x641C;&#x72D7;&#x8F93;&#x5165;&#x6CD5;</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x4E0B;&#x8F7D;&#x641C;&#x72D7;&#x8F93;&#x5165;&#x6CD5;Linux&#x7248;&#xFF0C;&#x5E76;&#x79FB;&#x52A8;&#x81F3;Ubuntu&#x4E0B;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx libssh2-1
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -f
+<span class="token function">sudo</span> dpkg -i sogoupinyin_2.3.1.0112_amd64.deb
+<span class="token comment"># &#x5B89;&#x88C5;fcitx&#xFF1A;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx
+<span class="token comment"># &#x5B89;&#x88C5;fcitx&#x7684;&#x914D;&#x7F6E;&#x5DE5;&#x5177;&#xFF1A;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx-config-gtk
+<span class="token comment"># &#x5B89;&#x88C5;fcitx&#x7684;table-all&#x8F6F;&#x4EF6;&#x5305;:</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> fcitx-table-all
+<span class="token comment"># &#x5B89;&#x88C5;im-switch&#x5207;&#x6362;&#x5DE5;&#x5177;&#xFF1A;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> im-switch
+<span class="token comment"># &#x91CD;&#x542F;</span>
+<span class="token function">sudo</span> <span class="token function">reboot</span>
+fcitx-config-gtk3
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85visual-studio-code">&#x5B89;&#x88C5;Visual Studio Code</h2>
+
+<p><a href="https://blog.csdn.net/q357010621/article/details/87891694?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159064139619195162541547%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=159064139619195162541547&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v2~pc_rank_v3-1-87891694.first_rank_ecpm_v2_pc_rank_v3&amp;utm_term=ubuntu%E5%AE%89%E8%A3%85vscode">ubuntu&#x5B89;&#x88C5;vscode&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x65B9;&#x6CD5;1&#xFF1A;</span>
+<span class="token function">sudo</span> add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> ubuntu-make
+umake ide visual-studio-code
+<span class="token comment"># &#x65B9;&#x6CD5;2&#xFF1A;</span>
+<span class="token comment"># &#x4E0B;&#x8F7D;deb&#x5B89;&#x88C5;&#x5305;</span>
+<span class="token function">sudo</span>  dpkg  -i   code_1.31.1-1549938243_amd64.deb
+</pre><h2 class="mume-header" id="%E4%BF%AE%E6%94%B9ubuntu%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E7%A7%B0">&#x4FEE;&#x6539;Ubuntu&#x8BA1;&#x7B97;&#x673A;&#x540D;&#x79F0;</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> gedit /etc/hostname
+<span class="token function">sudo</span> <span class="token function">reboot</span>
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85gcc48">&#x5B89;&#x88C5;gcc4.8</h2>
+
+<p><a href="https://blog.csdn.net/broliao/article/details/104613443">Ubuntu 18.04&#x5B89;&#x88C5;gcc(4.8&#x3001;4.9)&#x3001;g++(4.8&#x3001;4.9)</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># 1.&#x624B;&#x52A8;&#x52A0;&#x5165;&#x66F4;&#x65B0;&#x6E90;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> remove gcc
+<span class="token function">sudo</span> gedit /etc/apt/sources.list
+<span class="token comment"># sources.list&#x6700;&#x540E;&#x6DFB;&#x52A0;&#x5185;&#x5BB9;</span>
+<span class="token comment"># deb http://dk.archive.ubuntu.com/ubuntu/ xenial main</span>
+<span class="token comment"># deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe</span>
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+
+<span class="token comment"># 2.&#x5B89;&#x88C5;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gcc-4.8
+
+<span class="token comment"># 3.&#x66F4;&#x65B0;</span>
+<span class="token function">sudo</span> update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 <span class="token number">20</span>
+<span class="token function">sudo</span> update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 <span class="token number">20</span>
+
+<span class="token comment"># 4.&#x9A8C;&#x8BC1;</span>
+gcc --version
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85vim">&#x5B89;&#x88C5;vim</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">vim</span>
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8">&#x5B89;&#x88C5;&#x4EA4;&#x53C9;&#x7F16;&#x8BD1;&#x5668;</h2>
+
+<p><a href="https://blog.csdn.net/floatinglong/article/details/82704390?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase">bash: /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-gcc: &#x6CA1;&#x6709;&#x90A3;&#x4E2A;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x89E3;&#x538B;&#x7F29;</span>
+<span class="token function">sudo</span> <span class="token function">tar</span> xvzf arm-linux-gcc-4.5.1-v6-vfp-20101103.tgz -C /
+<span class="token comment"># dr_hayden@VEGA:~$&#x4E0B;</span>
+<span class="token function">vim</span> .bashrc
+<span class="token comment"># &#x884C;&#x5C3E;&#x6DFB;&#x52A0;&#xFF1A;</span>
+    <span class="token comment">####arm-linux-gcc</span>
+    <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/opt/FriendlyARM/toolschain/4.5.1/bin:<span class="token environment constant">$PATH</span>
+<span class="token builtin class-name">source</span> .bashrc
+<span class="token comment"># bash: /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-gcc: &#x6CA1;&#x6709;&#x90A3;&#x4E2A;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> lsb-core
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> g++-multilib
+arm-linux-gcc -v
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85tslib">&#x5B89;&#x88C5;tslib</h2>
+
+<p><a href="https://blog.csdn.net/qq_22122811/article/details/64541428">tslib&#x5B89;&#x88C5;&#x4E0E;&#x6D4B;&#x8BD5;</a></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> <span class="token function">mv</span> tslib-1.4.tar.gz /opt
+<span class="token function">sudo</span> <span class="token function">tar</span> zxvf tslib-1.4.tar.gz
+<span class="token builtin class-name">cd</span> tslib/
+<span class="token comment">#&#x521B;&#x5EFA;&#x5B89;&#x88C5;&#x76EE;&#x5F55;</span>
+<span class="token function">mkdir</span> tmp
+<span class="token comment">#&#x8BBE;&#x7F6E;&#x53C2;&#x6570;</span>
+$ <span class="token builtin class-name">echo</span> <span class="token string">&quot;ac_cv_func_malloc_0_nonnull=yes&quot;</span> <span class="token operator">&gt;</span>arm-linux.cache
+<span class="token comment">#&#x914D;&#x7F6E;&#x5230;tmp&#x76EE;&#x5F55;&#x4E0B;</span>
+<span class="token function">sudo</span> ./configure --host<span class="token operator">=</span>arm-linux --cache-file<span class="token operator">=</span>arm-linux.cache --prefix<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>/tmp
+<span class="token comment">#&#x7F16;&#x8BD1;</span>
+<span class="token function">sudo</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token comment">#&#x5B89;&#x88C5;&#x5230;temp&#x76EE;&#x5F55;&#x4E0B;</span>
+<span class="token comment">#&#x8FDB;&#x5165;tmp, &#x5C06;tmp&#x91CC;&#x9762;&#x7684;bin &#xFF0C;etc&#xFF0C;include&#xFF0C;lib4&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;bin &#xFF0C;etc&#xFF0C;include&#xFF0C;lib4&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;  </span>
+<span class="token builtin class-name">cd</span> tmp
+<span class="token comment">#&#x5F3A;&#x5236;&#x62F7;&#x8D1D;temp/&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5230;/&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6839;&#x76EE;&#x5F55;/&#x4E0B;,-d:&#x4FDD;&#x6301;&#x94FE;&#x63A5;&#xFF0C;&#x539F;&#x6765;&#x7684;&#x662F;&#x94FE;&#x63A5;&#xFF0C;&#x590D;&#x5236;&#x8FC7;&#x6765;&#x7684;&#x8FD8;&#x662F;&#x94FE;&#x63A5;</span>
+<span class="token function">sudo</span> <span class="token function">mkdir</span> /usr/local/tslib
+<span class="token function">sudo</span> <span class="token function">cp</span> * /usr/local/tslib/ -rfd
+<span class="token comment">#&#x8003;&#x5B8C;bin &#xFF0C;etc&#xFF0C;include&#xFF0C;lib 4&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;</span>
+
+</pre><h2 class="mume-header" id="%E5%AE%89%E8%A3%85qt-creator">&#x5B89;&#x88C5;Qt Creator</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell">./qt-creator-linux-x86_64-opensource-2.5.2.bin
+</pre><h2 class="mume-header" id="qt%E5%BA%93%E6%BA%90%E7%A0%81">Qt&#x5E93;&#x6E90;&#x7801;</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">tar</span> zxvf qt-everywhere-opensource-src-4.8.5.tar.gz
+<span class="token function">sudo</span> <span class="token function">cp</span> -r qt-everywhere-opensource-src-4.8.5/ /usr/local/
+<span class="token function">sudo</span> <span class="token builtin class-name">cd</span> /usr/local/
+<span class="token function">sudo</span> <span class="token function">mv</span> qt-everywhere-opensource-src-4.8.5/ qt-pc
+<span class="token builtin class-name">cd</span> /home/dr_hayden/Program/Training/
+<span class="token function">sudo</span> <span class="token function">cp</span> -r qt-everywhere-opensource-src-4.8.5/ /usr/local/
+<span class="token function">sudo</span> <span class="token function">mv</span> qt-everywhere-opensource-src-4.8.5/ qt-arm
+</pre><h3 class="mume-header" id="qt-pc">Qt-PC</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> ./configure
+<span class="token comment"># Basic XLib functionality test failed!</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libx11-dev libxext-dev libxtst-dev
+<span class="token function">sudo</span> ./configure
+<span class="token function">sudo</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+</pre><h3 class="mume-header" id="qt-arm">Qt-ARM</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> <span class="token function">vim</span> /usr/local/qt-arm/mkspecs/qws/linux-arm-g++/qmake.conf
+
+<span class="token comment">#&#x5BF9;&#x6587;&#x4EF6;&#x4E2D;&#x5185;&#x5BB9;&#x8986;&#x76D6;</span>
+<span class="token comment"># modifications to g++.conf</span>
+QMAKE_CC                <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-gcc -lts
+QMAKE_CXX               <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-g++ -lts
+QMAKE_LINK              <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-g++ -lts
+QMAKE_LINK_SHLIB        <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-g++ -lts
+<span class="token comment"># modifications to linux.conf</span>
+QMAKE_AR                <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-ar cqs
+QMAKE_OBJCOPY           <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-objcopy
+QMAKE_STRIP             <span class="token operator">=</span> /opt/FriendlyARM/toolschain/4.5.1/bin/arm-linux-strip
+
+<span class="token function">sudo</span> ./configure -prefix /usr/local/Trolltech/QtEmbedded-4.8.5-arm -opensource -confirm-license -release -shared -embedded arm -xplatform qws/linux-arm-g++ -depths <span class="token number">16,18</span>,24 -fast -optimized-qmake -pch -qt-sql-sqlite -qt-libjpeg -qt-zlib -qt-libpng -qt-freetype -little-endian -host-little-endian -no-qt3support -no-libtiff -no-libmng -no-opengl -no-mmx -no-sse -no-sse2 -no-3dnow -no-openssl -no-webkit -no-qvfb -no-phonon -no-nis -no-opengl -no-cups -no-glib -no-xcursor -no-xfixes -no-xrandr -no-xrender -no-pch -no-separate-debug-info -nomake examples -nomake tools -nomake docs -qt-mouse-tslib -I/usr/local/tslib/include -L/usr/local/tslib/lib
+
+<span class="token function">sudo</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+
+</pre><h2 class="mume-header" id="ffmpeg">ffmpeg</h2>
+
+<h3 class="mume-header" id="%E5%AE%89%E8%A3%85ffmpeg">&#x5B89;&#x88C5;ffmpeg</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sudo</span> gedit /etc/apt/sources.list
+<span class="token comment">#&#x6CE8;&#x91CA;&#x5B89;&#x88C5;gcc-4.8&#x65F6;&#x52A0;&#x5165;&#x7684;&#xFF1A;</span>
+<span class="token comment"># deb http://dk.archive.ubuntu.com/ubuntu/ xenial main</span>
+<span class="token comment"># deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe</span>
+<span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> autoconf automake build-essential libass-dev libfreetype6-dev libsdl2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo zlib1g-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> yasm
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libx264-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libfdk-aac-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libmp3lame-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libopus-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libvpx-dev
+<span class="token builtin class-name">cd</span> /home/dr_hayden/Share/
+<span class="token function">tar</span> xjvf ffmpeg-3.3.9.tar.bz2
+<span class="token builtin class-name">cd</span> ffmpeg-3.3.9/
+./configure --prefix<span class="token operator">=</span>/usr/local/ffmpeg --enable-shared --enable-libx264 --enable-libfdk-aac --enable-libmp3lame --enable-libopus --enable-libvpx --enable-nonfree --enable-gpl
+<span class="token function">sudo</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> /usr/local/ffmpeg/lib/
+<span class="token function">sudo</span> <span class="token function">cp</span> * /usr/lib/
+<span class="token function">sudo</span> <span class="token function">cp</span> * /usr/lib/ -rdf
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/include/
+<span class="token function">sudo</span> <span class="token function">cp</span> * /usr/include/ -rdf
+<span class="token function">sudo</span> gedit /etc/profile
+<span class="token comment">#&#x5728;&#x6587;&#x4EF6;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;</span>
+<span class="token comment">#export FFMPEG_HOME=/usr/local/ffmpeg</span>
+<span class="token comment">#export PATH=$FFMPEG_HOME/bin:$PATH</span>
+<span class="token builtin class-name">source</span> /etc/profile
+<span class="token function">sudo</span> gedit /etc/ld.so.conf
+<span class="token function">sudo</span> ldconfig -v
+</pre><h3 class="mume-header" id="%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%85%8D%E7%BD%AEffmpeg">&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x914D;&#x7F6E;ffmpeg</h3>
+
+<ol>
+<li>
+<p>&#x5728;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;&#x5EFA;&#x4E2A;&#x6587;&#x4EF6;&#x5939; ffmpeg&#xFF0C;&#x62F7;&#x8D1D;&#x5230;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;</p>
+</li>
+<li>
+<p>&#x628A;/usr/local/ffmpeg	lib &#x548C; include &#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230; QT &#x9879;&#x76EE;&#x7684; ffmpeg &#x6587;&#x4EF6;&#x5939;&#xFF08;&#x53EF;&#x4EE5;&#x4E0D;&#x52A0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#xFF09;</p>
+</li>
+<li>
+<p>&#x5728;Qt&#x9879;&#x76EE;xxx.pro&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x4E0B;&#x9762;&#x4E24;&#x53E5;&#x8BDD;&#xFF1A;</p>
+</li>
+</ol>
+<pre data-role="codeBlock" data-info="pro" class="language-pro"><code>INCLUDEPATH += ./ffmpeg/include
+LIBS += -L./ffmpeg/lib/ -lavcodec -lavdevice -lavfilter -lavformat -lavutil -lpostproc -lswscale -lswresample
+</code></pre><p><a href="https://blog.csdn.net/steven6977/article/details/9124539">&#x975E;&#x5E38;&#x8BE6;&#x7EC6;&#x7684;Qt PRO&#x6587;&#x4EF6;&#x8BED;&#x6CD5;&#x4ECB;&#x7ECD;</a></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

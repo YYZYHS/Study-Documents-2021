@@ -1,0 +1,398 @@
+1、系统调用是操作系统提供给用户程序的一组“特殊”接口。
+===============================
+#include <stdio.h>
+int main()
+{
+    printf("helloword\n");
+    return 0;
+}
+//可以在Linux下运行，也可以在window下运行
+
+#include <windows.h> //使用这个头文件，就不能移植到linux下
+#include <sys/types.h> //使用这个头文件，也不能移植到window下
+=======================================================
+系统调用函数 open  close  read  write函数
+
+int fd = open("test.txt", O_RDWR|O_APPEND)
+======================================================
+数据首地址
+char *buffer   ->buffer的地址是多少？     &buffer
+
+int number = 100；
+int *p = &number； p是number的地址而不是指针p的地址
+指针p的地址：&p
+
+#include <stdio.h>
+int main()
+{
+	char *buffer=NULL;
+	printf("buffer size is %ld\n", sizeof(buffer));
+	int *number=NULL;
+	printf("number size is %ld\n", sizeof(number));
+	return 0;
+}
+【运行结果】
+qst@qst:~$ gcc test.c -o test
+qst@qst:~$ ./test 
+buffer size is 8
+number size is 8
+
+strlen 和  sizeof的区别
+==========================================================
+结构体对齐，以结构体里成员的最大的值为基本单元
+#include <stdio.h>
+struct  student
+{
+	int number;   //4
+	char* name;  //8
+	int age;   //4
+};
+int main()
+{
+	struct student st;
+	printf("st sizeof is %ld\n", sizeof(st));
+	return 0;
+}
+【结果】
+qst@qst:~$ gcc test.c -o test
+qst@qst:~$ ./test 
+st sizeof is 24
+===================
+#include <stdio.h>
+struct  student
+{
+	char* name;  //8
+	int number;   //4
+	int age;   //4
+};
+int main()
+{
+	struct student st;
+	printf("st sizeof is %ld\n", sizeof(st));
+	return 0;
+}
+【结果】
+qst@qst:~$ gcc test.c -o test
+qst@qst:~$ ./test 
+st sizeof is 16
+==============================================================
+//共用体
+#include <stdio.h>
+#include <string.h>
+union Data
+{
+   int i;    //4
+   float f;  //4
+   char  str;   //20
+};
+ 
+int main( )
+{
+   union Data data;        
+   printf( "Memory size occupied by data : %d\n", sizeof(data));
+   return 0;
+}
+//共用体和结构体区别：共用体里所有成员公用一个地址；而结构体是所有成员单独占用一个地址。
+=============================================================
+标准的文件描述符：标准输入0，标准输出1，标准错误2
+#include <stdio.h>
+#include <string.h>
+ 
+int main( )
+{
+	char buffer[6]="hello\n";
+ 	write(1, buffer, sizeof(buffer));  // 相当于printf
+	char test[10];
+	read(0, test, 10);   //相当于scanf
+	write(1, test, sizeof(test)); 
+   return 0;
+}
+【结果】
+qst@qst:~$ ./test 
+hello
+nihao
+nihao
+==================================================================
+大家所熟悉的数据类型：int  char  float  double ......
+各种各样的你们之前没遇到的数据类型： pid_t
+
+typedef int uint_8;  //给int取个“外号”
+uint_8 number;
+
+struct student
+{
+};
+struct student std;
+typedef struct student
+{
+}STUDENT;
+STUDENT std;
+=================================================================
+pid_t wait(int *status);
+功能：等待子进程改变状态，如果子进程终止了，此函数会回收子进程的资源。
+【重点】
+当你调用wait函数，wait函数运行结束后，status里面就有值的
+【拓展】
+1、值传递和地址传递
+2、C++和C的用法： C++有个引用的说法
+  int  test（int &number）  //c++
+  int  test (int *number)  //C
+=========
+#include <stdio.h>
+#include <stdlib.h>
+void testFunction(int *number)   //地址传递
+{
+	(*number)++;
+}
+int main(int argc, char *argv[])
+{
+	int number=10;
+	testFunction(&number);
+	printf("number is %d\n", number);
+	return 0;
+}
+=====================================================
+怎么取出子进程的状态信息 
+   1、调用WIFEXITED(status)，根据这个函数的返回值来判断，大于0正常退出，等于0异常退出
+   2、根据1的结论如果是大于0的话，在调用WEXITSTATUS(status)函数
+========================================================
+理解技巧： 函数指针   指针函数     指针数组  数组指针
+void (*function)(void)  函数指针
+int *function(void)  指针函数
+
+int  function(int *p)//函数参数是什么？ 是int型指针
+int function(int (*test)(void))//function参数是函数类型的指针
+int main()
+{
+    int a=100;
+    int* number = &a;
+    function(number);
+    return 0;
+}
+====================================================================
+
+#include <stdio.h>
+
+#include <unistd.h>
+
+#include <stdlib.h>
+
+#include <sys/types.h>
+
+#include <sys/stat.h>
+
+#include <fcntl.h>
+
+
+int main(void)
+
+{
+	
+	int fd1;
+	
+	int fd2;
+	
+	
+	fd1 = open("test", O_CREAT | O_WRONLY,0777);
+	
+	if (fd1 < 0)
+	
+	{
+		
+		perror("open");
+		
+		exit(-1);
+	
+	}
+	
+	close(1);
+	
+	fd2 = dup(fd1);
+	
+	printf("fd2=%d\n", fd2);
+	
+	return 0;
+
+}
+
+
+
+【结果】：程序运行后无任何显示
+【原因】：在于close(1)这行代码，把标准输出给关闭了，就相当于把printf关闭
+===========================================================
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+	int fd1;
+	int fd2;
+	
+	fd2=dup(1);//fd2=3，此时的3是标准输出
+	printf("new:fd2=%d\n",fd2);
+	
+	fd1=open("test2222",O_CREAT|O_RDWR, S_IRWXU);
+	printf("fd1=%d\n", fd1);
+	close(1);
+	int fd3=dup(fd1);//  fd3=1
+	printf("fd3=%d\n", fd3);//不显示，因为标准输出关闭了
+	printf("hello world\n");  //不显示，因为标准输出关闭了
+
+	close(1); //记住此时的1不是标准输出，而是打开test222文件的文件描述符
+	int fd4=dup(fd2);//fd4=1,因为dup(fd2)的，而fd2就是表示标准输出
+	printf("i love you \n");
+	return 0;
+}
+======
+【分析】
+close(1);         //关闭标准输出，文件描述符表中留下一个1没有人使用
+int fd3=dup(fd1);// fd3=1,此时的1不是标准输出，而是打开test222文件的文件描述符
+=================================
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int main(void)
+{
+	int fd1;
+	int fd2;
+	
+	fd1 = open("test1111", O_CREAT | O_WRONLY, 0666);
+	if (fd1 < 0)
+	{
+		perror("open:");
+		exit(-1);
+	}
+	fd2 = dup2(fd1, 1);  //先close(1)，然在进行dup操作
+	printf("fd2=%d\n", fd2);
+	return 0;
+}
+=================================================
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+	int fd1;
+	int fd2 = 3;
+	int err = 0;
+	
+	err = dup2(1,fd2);//save 1
+	if(err<0)
+	{
+		perror("dup2");
+	}
+	printf("fd2=%d,err=%d\n", fd2, err);
+	//err=3  因为dup2(1,fd2)这里面fd2=3，且3没有人使用他
+	
+
+	fd1 = open("test", O_CREAT|O_RDWR, S_IRWXU);
+	dup2(fd1,1);    // 先close(1) 再dup2(fd1,1) = 1
+	printf("hello world\n");//显示
+
+	dup2(fd2,1);//dup2(fd2,1)=1
+	printf("I love you \n");
+	return 0;
+}
+=====================================================
+查看消息队列命令：ipcs -q
+qst@qst:~$ ipcs -q
+
+--------- 消息队列 -----------
+键        msqid      拥有者  权限     已用字节数 消息 
+
+============================
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <string.h>
+
+//定义消息队列的消息结构体
+typedef struct _msg
+{
+	long mtype; //消息类型
+	char mtext[50];//消息正文
+}MSG;
+
+int main(int argc, char *argv[])
+{
+	key_t key;  //IPC键值
+	int  msgqid;
+	MSG msg;
+	
+	key = ftok(".", 2012); //获取key键值
+	msgqid = msgget(key, IPC_CREAT|0666); //创建消息队列
+	if (msgqid == -1)
+	{
+		perror("msgget");
+		exit(-1);
+	}
+	msg.mtype = 10;  //消息队列的消息结构体赋值操作
+	strcpy(msg.mtext, "hello world");
+	msgsnd(msgqid, &msg, sizeof(msg.mtext), 0);
+	return 0;
+}
+
+=================================
+今明两天任务：
+1、巩固这一周讲的内容；
+2、完成作业三；
+3、认真刷题；
+4、认真复习；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
