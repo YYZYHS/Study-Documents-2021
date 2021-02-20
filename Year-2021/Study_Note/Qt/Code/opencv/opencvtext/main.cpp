@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    cv::Mat image = imread("C:\\Users\\yyz\\Desktop1.jpg");
+    cv::Mat image = imread("C:\\Users\\yyz\\Desktop\\1.jpg");
     namedWindow("Display window",WINDOW_AUTOSIZE);
     imshow("Display window",image);
     waitKey(0);
