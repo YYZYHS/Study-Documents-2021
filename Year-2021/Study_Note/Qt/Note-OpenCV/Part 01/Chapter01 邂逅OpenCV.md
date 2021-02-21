@@ -249,6 +249,8 @@ LIBS += -L F:\opencv\buildopencv\install\x64\mingw\lib\libopencv_*.a
 
 ```
 
+<font color = red size = 5>**注意：只要使用到OpenCV的库，就必须加入上述代码**</font>
+
 
 
 ### 1.5.1 程序一 图像显示
@@ -329,9 +331,91 @@ int main(int argc, char *argv[])
 
 ### 1.5.3 程序三 图像模糊
 
+图像模糊即使用OpenCV对图像进行均值滤波操作，其主要用到了`blur函数`
 
+文件：<font color = blur size = 5>main.cpp</font>
+
+```c++
+#include "mainwindow.h"
+
+#include <QApplication>
+
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+using namespace cv;
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    //【1】载入原始图
+    Mat srcImage = imread("E:\\StudyDocuments\\Study-Documents-2021\\Year-2021\\Study_Note\\Qt\\Code\\opencv\\test.jpeg");
+    //【2】显示原始图
+    imshow("original image",srcImage);
+    //【3】进行均值滤波操作
+    Mat dstImage;
+    blur(srcImage,dstImage,Size(7,7));
+    //【4】显示效果图
+    imshow("Effect picture",dstImage);
+    waitKey(0);
+    return 0;
+}
+```
+
+
+
+代码很好理解，先照常加载显示原始图，再调用一次blur函数，最红显示效果图
+
+
+
+![image-20210221225516169](image/image-20210221225516169.png)
 
 ### 1.5.4 程序四 canny边缘检测
+
+文件：<font color = blur size = 5>main.cpp</font>
+
+```c++
+#include "mainwindow.h"
+
+#include <QApplication>
+
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+using namespace cv;
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    //【0】载入原始图
+    Mat srcImage = imread("E:\\StudyDocuments\\Study-Documents-2021\\Year-2021\\Study_Note\\Qt\\Code\\opencv\\test.jpeg");
+    imshow("original image",srcImage);//显示原始图
+    Mat dstImage,edge,grayImage;//定义参数
+    //【1】创建与src同类型和大小的矩阵(dst)
+    dstImage.create(srcImage.size(),srcImage.type());
+    //【2】将原图像转换为灰度图像
+    //此句代码的OpenCV2版为：
+    //cvtColor(srcImage,grayImage,CV_BGR2GRAY);
+    //此句代码的OpenCV3版为：
+    cvtColor(srcImage,grayImage,COLOR_BGR2GRAY);
+    //【3】先使用5x5内核来降噪
+    blur(grayImage,edge,Size(5,5));
+    //【4】运行Canny算子
+    Canny(edge,edge,3,9,3);
+    //【5】显示效果图
+    imshow("Effect picture",edge);
+    waitKey(0);
+    return 0;
+}
+```
+
+首先，照常载入图像并显示
+
+然后将图像转变成灰度图，保存在`grayImage`中
+
+再用`blur函数`对`grayImage`进行降噪处理(模糊处理)，并将结果保存在`edge`中
+
+最后，调用`Canny函数`对edge进行边缘检测
+
+![image-20210221233624398](image/image-20210221233624398.png)
 
 ## 1.6 OpenCV视频操作基础
 
