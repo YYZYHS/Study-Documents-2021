@@ -253,6 +253,8 @@ LIBS += -L F:\opencv\buildopencv\install\x64\mingw\lib\libopencv_*.a
 
 ### 1.5.1 程序一 图像显示
 
+在新版OpenCV中，图像显示过程非常简单，只需用`imread`函数载入到新版本的<font color = red>图像存储数据结构Mat类</font>中,然后用<font color = red>imshow</font>函数显示即可。
+
 文件：<font color = blur size = 5>main.cpp</font>
 
 ```c++
@@ -279,11 +281,55 @@ int main(int argc, char *argv[])
 
 ```
 
-![效果图](image/image-20210221131138455.png)
+<img  src="image/image-20210221131138455.png" align='left'/>
 
 ### 1.5.2 程序二 图像腐蚀
 
+腐蚀，即用图像中的暗色部分“腐蚀”掉图像中的高亮部分
+
+文件：<font color = blur size = 5>main.cpp</font>
+
+```c++
+#include "mainwindow.h"
+
+#include <QApplication>
+
+#include <opencv2/highgui/highgui.hpp>      //OpenCV highgui模块头文件
+#include <opencv2/imgproc/imgproc.hpp>      //OpenCV 图像处理模块头文件
+
+using namespace cv;                         //包含cv命名空间
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+
+    //【1】载入原图
+    Mat srcImage = imread("E:\\StudyDocuments\\Study-Documents-2021\\Year-2021\\Study_Note\\Qt\\Code\\opencv\\test.jpeg");
+    //【2】显示原图
+    imshow("original image",srcImage);
+    //【3】进行腐蚀操作
+    Mat element = getStructuringElement(MORPH_RECT,Size(15,15));
+    Mat dstImage;
+    erode(srcImage,dstImage,element);
+    //【4】显示效果图
+    imshow("Effect picture",dstImage);
+    waitKey(0);
+
+    return 0;
+}
+```
+
+程序首先载入和显示一幅原视图像(original image)
+
+然后定义一个Mat类型的变量来获得`getStructuringElement函数`的返回值，即指定形状和尺寸的结构元素(内核矩阵)
+
+接着调用`erode函数`进行图像腐蚀操作，最后调用`imshow函数`进行显示效果图(Effect picture)
+
+![image-20210221223115324](image/image-20210221223115324.png)
+
 ### 1.5.3 程序三 图像模糊
+
+
 
 ### 1.5.4 程序四 canny边缘检测
 
