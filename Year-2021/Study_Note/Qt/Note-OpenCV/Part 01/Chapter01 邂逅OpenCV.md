@@ -14,6 +14,8 @@
 >**出版日期：2015-02**
 >
 >**笔记仅供本人参考使用，不具备共通性**
+>
+>**笔记中代码均是OpenCV+Qt的代码，并非用vs开发，请勿混淆**
 
 ## 1.1 OpenCV周边概念认知
 
@@ -233,7 +235,51 @@
 
 ## 1.5 快速上手OpenCV图像处理
 
+### 前期准备
+
+在创建qt新项目后，需要在pro文件中添加如下代码，以能够使用OpenCV的库
+
+```c++
+//在pro文件的最后添加如下代码
+INCLUDEPATH += F:\opencv\buildopencv\install\include\
+               F:\opencv\buildopencv\install\include\opencv2\
+               F:\opencv\buildopencv\install\include\opencv
+
+LIBS += -L F:\opencv\buildopencv\install\x64\mingw\lib\libopencv_*.a
+
+```
+
+
+
 ### 1.5.1 程序一 图像显示
+
+文件：<font color = blur size = 5>main.cpp</font>
+
+```c++
+#include "mainwindow.h"
+#include <QApplication>
+//上面两个是qt有的，暂时不理会
+
+#include <opencv2/opencv.hpp>
+using namespace cv;//包含cv命名空间
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    //【1】载入图片
+    Mat srcImage = imread("test.jpg");
+    //图片要放在debug目录下，或者直接用完整的绝对地址，如下
+    //Mat srcImage = imread("E:\\StudyDocuments\\Study-Documents-2021\\Year-2021\\Study_Note\\Qt\\Code\\opencv\\test.jpg");
+    //【2】显示图像
+    //此处不可显示中文，后期再寻解决之道
+    imshow("[original image]",srcImage);
+    //【3】等待任意键按下
+    waitKey(0);
+}
+
+```
+
+![效果图](image/image-20210221131138455.png)
 
 ### 1.5.2 程序二 图像腐蚀
 
