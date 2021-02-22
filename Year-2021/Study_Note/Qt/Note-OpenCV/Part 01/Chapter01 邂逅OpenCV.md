@@ -61,7 +61,7 @@
 + 设计目标
   + 执行速度尽量快
   + 关注实时应用
-+ 采用优化的C/C++代码编写
++ 采用优化的C/cpp代码编写
 + 能够多核处理
 + 提供MLL(Machine Learning Library)机器学习库
 
@@ -93,7 +93,7 @@
 
 **<font color=blue size=4>该文件中存放的是OpenCV2中与新模块构造相关的说明代码：</font>**
 
-```c++
+```cpp
 /*
  *      ** File generated automatically, do not modify **
  *		**				文件自动生成，请勿修改				**
@@ -239,7 +239,7 @@
 
 在创建qt新项目后，需要在pro文件中添加如下代码，以能够使用OpenCV的库
 
-```c++
+```cpp
 //在pro文件的最后添加如下代码
 INCLUDEPATH += F:\opencv\buildopencv\install\include\
                F:\opencv\buildopencv\install\include\opencv2\
@@ -259,7 +259,7 @@ LIBS += -L F:\opencv\buildopencv\install\x64\mingw\lib\libopencv_*.a
 
 文件：<font color = blur size = 5>main.cpp</font>
 
-```c++
+```cpp
 #include "mainwindow.h"
 #include <QApplication>
 //上面两个是qt有的，暂时不理会
@@ -291,7 +291,7 @@ int main(int argc, char *argv[])
 
 文件：<font color = blur size = 5>main.cpp</font>
 
-```c++
+```cpp
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -335,7 +335,7 @@ int main(int argc, char *argv[])
 
 文件：<font color = blur size = 5>main.cpp</font>
 
-```c++
+```cpp
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -363,7 +363,7 @@ int main(int argc, char *argv[])
 
 
 
-代码很好理解，先照常加载显示原始图，再调用一次blur函数，最红显示效果图
+代码很好理解，先照常加载显示原始图，再调用一次blur函数，最后显示效果图
 
 
 
@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
 
 文件：<font color = blur size = 5>main.cpp</font>
 
-```c++
+```cpp
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -421,7 +421,7 @@ int main(int argc, char *argv[])
 
 ### 1.6.1 读取并播放视频
 
-```c++
+```cpp
 #include "mainwindow.h"
 #include <QApplication>
 #include <opencv2/opencv.hpp>
@@ -463,7 +463,7 @@ int main(int argc, char *argv[])
 
 #### 最简单的调用
 
-```c++
+```cpp
 #include "mainwindow.h"
 #include <QApplication>
 #include <opencv2/opencv.hpp>
@@ -501,7 +501,7 @@ int main(int argc, char *argv[])
 
 #### 增加canny边缘检测
 
-```c++
+```cpp
 #include "mainwindow.h"
 #include <QApplication>
 #include <opencv2/opencv.hpp>
