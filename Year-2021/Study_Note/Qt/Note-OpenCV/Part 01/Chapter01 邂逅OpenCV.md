@@ -421,7 +421,131 @@ int main(int argc, char *argv[])
 
 ### 1.6.1 读取并播放视频
 
+```c++
+#include "mainwindow.h"
+#include <QApplication>
+#include <opencv2/opencv.hpp>
+#include <QDebug>
+using namespace cv;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    //【1】读入视频
+    VideoCapture capture("E:/StudyDocuments/Study-Documents-2021/Year-2021/Study_Note/Qt/Code/opencv/test2.avi");
+    if (!capture.isOpened())
+    {
+        qDebug()<< "can't open video";
+        return -1;
+    }
+
+    //【2】虚幻显示每一帧
+    while (1)
+    {
+        //定义一个Mat变量，用于存储每一帧图像
+        Mat frame;
+        //读取当前帧
+        capture>>frame;
+        //显示当前帧
+        imshow("1",frame);
+        //延时30ms
+        waitKey(30);
+    }
+    return 0;
+
+}
+```
+
+代码本身应该是没问题了，但可能是缺少ffmpeg库，也可能是缺少相应的解码器，该问题暂时未解决，先留着，日后返回来再看。
+
+![image-20210222101229742](image/image-20210222101229742.png)
+
 ### 1.6.2 调用摄像头采集图像
+
+#### 最简单的调用
+
+```c++
+#include "mainwindow.h"
+#include <QApplication>
+#include <opencv2/opencv.hpp>
+#include <QDebug>
+using namespace cv;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    //【1】从摄像头读入视频
+    VideoCapture capture(0);//此处用0来代表调用摄像头
+    if (!capture.isOpened())
+    {
+        qDebug()<< "can't open video";
+        return -1;
+    }
+
+    //【2】虚幻显示每一帧
+    while (1)
+    {
+        //定义一个Mat变量，用于存储每一帧图像
+        Mat frame;
+        //读取当前帧
+        capture>>frame;
+        //显示当前帧
+        imshow("video",frame);
+        //延时30ms
+        waitKey(30);
+    }
+    return 0;
+
+}
+```
+
+<img  src="image/image-20210222101705076.png" align='left'/>
+
+#### 增加canny边缘检测
+
+```c++
+#include "mainwindow.h"
+#include <QApplication>
+#include <opencv2/opencv.hpp>
+#include <QDebug>
+using namespace cv;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    //【1】从摄像头读入视频
+    VideoCapture capture(0);//此处用0来代表调用摄像头
+    if (!capture.isOpened())
+    {
+        qDebug()<< "can't open video";
+        return -1;
+    }
+    Mat edges;
+
+    //【2】循环显示每一帧
+    while (1)
+    {
+        //定义一个Mat变量，用于存储每一帧图像
+        Mat frame;
+        //读取当前帧
+        capture>>frame;
+        //将原图像转换为灰度图像
+        cvtColor(frame,edges,COLOR_BGR2GRAY);
+        //使用3x3内核来降噪(2x3+1=7)
+        blur(edges,edges,Size(7,7));
+        //进行canny边缘检测
+        Canny(edges,edges,0,30,3);
+        //显示当前帧
+        imshow("Effect video",edges);
+        //延时30ms
+        if(waitKey(30) >=0) break;
+    }
+    return 0;
+
+}
+```
+
+
+
+<img  src="image/image-20210222102443194.png" align='left'/>
 
 ## 1.7 本章小结
 
+通过本章学习，我对OpenCV有了一个大概的了解，但同时也发现了，作为不太常见的Qt+OpenCV组合，我也面临着许多无从下手的难题，这意味着我必须更加努力钻研，更多地掌握Qt和OpenCV独有的特性，才能使我在接下来的学习过程中少走弯路。
