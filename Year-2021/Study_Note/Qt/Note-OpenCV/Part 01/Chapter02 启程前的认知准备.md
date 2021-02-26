@@ -279,11 +279,17 @@ int main(int argc, char *argv[])
 
 光流表达了图像的变化，由于它包含了目标运动的信息，因此可被观察者用来确定目标的运动情况。
 
-示例程序在文件夹中的位置：`...\opencv\sources\samples\cpp\camshiftdemo.cpp`
+示例程序在文件夹中的位置：`...\opencv\sources\samples\cpp\tutorial_code\video\optical_flow\optical_flow.cpp`
 
 使用Qt重新编译后如下
 
 文件：<font color = blur size = 5>main.cpp</font>
+
+```cpp
+
+```
+
+
 
 ### 2.1.3 点追踪：Ikdemo
 
