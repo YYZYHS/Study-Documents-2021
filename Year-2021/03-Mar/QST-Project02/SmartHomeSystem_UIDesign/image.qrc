@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/Image">
+        <file>Image/SchoolBadge .png</file>
+        <file>Image/timg.jfif</file>
+        <file>Image/back.jpg</file>
+        <file>Image/Title1.png</file>
+        <file>Image/Title2.png</file>
+        <file>Image/background.jpg</file>
+        <file>Image/background2.jpg</file>
+        <file>Image/background3.jpg</file>
+        <file>Image/background4.jfif</file>
+    </qresource>
+    <qresource prefix="/Icon">
+        <file>Image/led_off.png</file>
+        <file>Image/led_on.png</file>
+        <file>Image/Speaker_off.png</file>
+        <file>Image/Speaker_on.png</file>
+        <file>Image/thermometer.png</file>
+        <file>Image/Emulator.png</file>
+    </qresource>
+</RCC>
