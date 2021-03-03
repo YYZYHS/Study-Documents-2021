@@ -1,6 +1,6 @@
-# 邂逅OpenCV
+﻿# 邂逅OpenCV
 
-[toc]
+@[toc]
 ## 前言
 
 >**笔记系列**
@@ -61,7 +61,7 @@
 + 设计目标
   + 执行速度尽量快
   + 关注实时应用
-+ 采用优化的C/cpp代码编写
++ 采用优化的C/C++代码编写
 + 能够多核处理
 + 提供MLL(Machine Learning Library)机器学习库
 
@@ -87,7 +87,8 @@
 
 进入到`...\opencv\build\include\opencv2`目录
 
-![image-20210220180503197](image/image-20210220180503197.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210222102952481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
+
 
 **<font color=blue size=4>在该目录中，找到`opencv_modules.hpp`的hpp文件</font>**
 
@@ -282,8 +283,7 @@ int main(int argc, char *argv[])
 }
 
 ```
-
-<img  src="image/image-20210221131138455.png" align='left'/>
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210222103031874.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
 
 ### 1.5.2 程序二 图像腐蚀
 
@@ -320,6 +320,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210222103230763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
 
 程序首先载入和显示一幅原视图像(original image)
 
@@ -327,7 +328,7 @@ int main(int argc, char *argv[])
 
 接着调用`erode函数`进行图像腐蚀操作，最后调用`imshow函数`进行显示效果图(Effect picture)
 
-![image-20210221223115324](image/image-20210221223115324.png)
+
 
 ### 1.5.3 程序三 图像模糊
 
@@ -361,13 +362,10 @@ int main(int argc, char *argv[])
 }
 ```
 
-
-
 代码很好理解，先照常加载显示原始图，再调用一次blur函数，最后显示效果图
 
+![](https://img-blog.csdnimg.cn/2021022210325474.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
 
-
-![image-20210221225516169](image/image-20210221225516169.png)
 
 ### 1.5.4 程序四 canny边缘检测
 
@@ -415,8 +413,7 @@ int main(int argc, char *argv[])
 
 最后，调用`Canny函数`对edge进行边缘检测
 
-![image-20210221233624398](image/image-20210221233624398.png)
-
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210222103342675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
 ## 1.6 OpenCV视频操作基础
 
 ### 1.6.1 读取并播放视频
@@ -457,7 +454,21 @@ int main(int argc, char *argv[])
 
 代码本身应该是没问题了，但可能是缺少ffmpeg库，也可能是缺少相应的解码器，该问题暂时未解决，先留着，日后返回来再看。
 
-![image-20210222101229742](image/image-20210222101229742.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210222103411394.png)
+
+**【问题已解决】**
+
+**问题原因：** 缺少ffmpeg的dll文件
+
+**详细解释：** 在Cmake opencv时，程序无法正确从网上下载下来需要的ffmpeg组件，进而在编译时无法正确安装ffmpeg，从而导致视频文件无法正确读取
+**解决方法：** 在”[Qt-OpenCV开发环境搭建（史上最详细）](https://blog.csdn.net/Mr_robot_strange/article/details/110677323?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161378399316780271558682%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=161378399316780271558682&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-110677323.pc_search_result_hbase_insert&utm_term=qt-opencv)“一文中，问题汇总部分的问题五
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210303090852400.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
+
+
+
+
+
+
 
 ### 1.6.2 调用摄像头采集图像
 
@@ -497,7 +508,8 @@ int main(int argc, char *argv[])
 }
 ```
 
-<img  src="image/image-20210222101705076.png" align='left'/>
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210222103429920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
+
 
 #### 增加canny边缘检测
 
@@ -541,10 +553,8 @@ int main(int argc, char *argv[])
 
 }
 ```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2021022210344830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNTY2Mjc0,size_16,color_FFFFFF,t_70)
 
-
-
-<img  src="image/image-20210222102443194.png" align='left'/>
 
 ## 1.7 本章小结
 
