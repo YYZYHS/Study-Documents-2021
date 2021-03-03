@@ -1,0 +1,84 @@
+除硬件之外的代码都应该写好了！~
+
+之前的飞鸽传说的项目来修改
+
+《基于Tiny4412智能家居系统的设计与实现》
+
+有一个温湿度传感器DHT11  
+
+你把DHT11传感器连接到Tiny4412开发板上的话，tiny4412开发板能够识别DHT11设备？
+
+Tiny4412开发板里也有系统，所以要识别这个DHT11设备，就相当于在这个系统里装DHT11相应的驱动程序
+
+
+模块在内核启动时装载称为静态装载，在内核已经运行时装载称为动态装载。
+静态装载：在内核启动之前，把模块已经添加进内核中去了额
+动态装载：在内核启动之后，把模块添加进内核中去
+
+内核是编译出来的。。生成内核文件zImage  烧录到开发板上去。。
+
+sudo apt-get install wine
+
+tiny4412开发板Linux内核编译
+1、解压linux3.5的内核文件；
+2、cd解压后内核文件中；
+3、cp  tiny4412_linux_defconfig   .config  
+    //把tiny4412_linux_defconfig配置文件保存到.config文件中
+4、内核配置  make menuconfig
+5、make   make好了之后会生成zImage文件（这个就是内核文件，arch/arm）
+
+
+//HELLOWORLD模块函数
+#include <linux/init.h>  //定义了一些相关的宏
+#include <linux/module.h> //定义了模块需要的 
+static int hello_init (void)  //模块加载函数
+{
+	//这边为什么是printk？而不是你们所熟悉的printf
+ 	printk(KERN_ALERT"hello,world"); //打印 He11o ， Wor1d
+ 	return 0;
+}
+
+ static void hello_exit(void)		//模块卸载函数
+{
+	printk(KERN_ALERT "Goodbye, Wor1d\n" ) ; //打印Goodbye,World
+}
+ modu1e_init (hello_init) ;    //指定模块加载函数
+ modu1e_exit(hello_exit);		//指定模块卸载函数
+ MODULE_LICENSE("Dual BSD/GPL" );//指定许可权为Dual BSD/GPL
+
+///
+正确的编译内核模块， 应该满足下面一些重要的先决条件:
+1、应该确保使用正确版本的编译工具，不同版本的内核需要不同版本的编译工具。
+2、应该有一份内核源码,该源码的版本应该和系统目前使用的内核版本一致。
+3、内核源码应该至少编译过一次,也就是执行过make命令。
+
+///uname -r  命令就是查看当前系统的Linux内核的版本
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
