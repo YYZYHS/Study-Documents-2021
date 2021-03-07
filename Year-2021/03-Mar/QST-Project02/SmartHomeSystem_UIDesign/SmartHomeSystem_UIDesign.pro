@@ -24,17 +24,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        Emulator.cpp \
         Login.cpp \
         Register.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        Emulator.h \
         Login.h \
         Register.h \
         mainwindow.h
 
 FORMS += \
+        Emulator.ui \
         Login.ui \
         Register.ui \
         mainwindow.ui
