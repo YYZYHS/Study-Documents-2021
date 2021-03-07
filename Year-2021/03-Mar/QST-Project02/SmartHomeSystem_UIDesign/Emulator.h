@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtMultimedia/QSound>
+#include "Login.h"
 namespace Ui {
 class Emulator;
 }
@@ -27,13 +28,26 @@ private slots:
 
     void LED_on();
     void LED_off();
+    void Beep_off();
+    void Beep_on();
 
     void on_pushButton_5_clicked();
 
     void on_pushButton_6_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_2_clicked();
+
 signals:
     void mainwindowclose();
+    void MainwindowBeepOn();
+    void MainWindowBeepOff();
+    void getstatus();
+    void settempzero();
+    void MainWindowLedOff();
 
 private:
     Ui::Emulator *ui;

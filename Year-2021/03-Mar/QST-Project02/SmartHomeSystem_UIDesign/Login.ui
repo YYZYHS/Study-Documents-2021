@@ -92,13 +92,25 @@
         <widget class="QLineEdit" name="UsrName"/>
        </item>
        <item>
-        <widget class="QLineEdit" name="UsrPassword"/>
+        <widget class="QLineEdit" name="UsrPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="ServerIP"/>
+        <widget class="QLineEdit" name="ServerIP">
+         <property name="text">
+          <string>127.0.0.1</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="PortID"/>
+        <widget class="QLineEdit" name="PortID">
+         <property name="text">
+          <string>5005</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

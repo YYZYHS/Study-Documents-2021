@@ -354,7 +354,14 @@
      <item>
       <widget class="QPushButton" name="pushButton_4">
        <property name="text">
-        <string>模拟</string>
+        <string>模拟警戒</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="text">
+        <string>模拟结束</string>
        </property>
       </widget>
      </item>
