@@ -17,5 +17,6 @@
         <file>Image/Speaker_on.png</file>
         <file>Image/thermometer.png</file>
         <file>Image/Emulator.png</file>
+        <file>Image/Refresh.png</file>
     </qresource>
 </RCC>
