@@ -15,10 +15,12 @@ Login::~Login()
 }
 
 void Login::on_buttonBox_accepted()
-{
+{ 
+    qDebug()<<"OK";
+    emit openemulator();
     qDebug()<<"OK";
     this->close();
-
+    qDebug()<<"OK";
 }
 
 void Login::on_buttonBox_rejected()

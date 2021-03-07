@@ -112,7 +112,7 @@
          <enum>Qt::AutoText</enum>
         </property>
         <property name="pixmap">
-         <pixmap resource="image.qrc">:/Image/Image/Title2.png</pixmap>
+         <pixmap resource="image.qrc">:/Image/Image/title.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -383,35 +383,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="image.qrc">
-         <normaloff>:/Icon/Image/Emulator.png</normaloff>:/Icon/Image/Emulator.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="pushButton_4">
        <property name="minimumSize">
         <size>
@@ -585,7 +556,7 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="Commend">
        <property name="maximumSize">
         <size>
          <width>150</width>
@@ -623,7 +594,7 @@
       </widget>
      </item>
      <item row="1" column="1" rowspan="3">
-      <widget class="QTextEdit" name="textEdit">
+      <widget class="QTextEdit" name="Feedback">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -776,15 +747,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>frame_2</zorder>
-   <zorder>frame_4</zorder>
-   <zorder>frame</zorder>
-   <zorder>label_8</zorder>
-   <zorder>label_9</zorder>
-   <zorder>frame_3</zorder>
-   <zorder>pushButton_6</zorder>
-   <zorder>widget_8</zorder>
-   <zorder>frame_5</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

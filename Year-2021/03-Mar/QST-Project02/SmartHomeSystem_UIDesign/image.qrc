@@ -3,12 +3,15 @@
         <file>Image/SchoolBadge .png</file>
         <file>Image/timg.jfif</file>
         <file>Image/back.jpg</file>
-        <file>Image/Title1.png</file>
-        <file>Image/Title2.png</file>
         <file>Image/background.jpg</file>
         <file>Image/background2.jpg</file>
         <file>Image/background3.jpg</file>
         <file>Image/background4.jfif</file>
+        <file>Image/title.png</file>
+        <file>Image/Title2.png</file>
+        <file>Image/led-off.png</file>
+        <file>Image/led-on.png</file>
+        <file>Image/thermometer2.png</file>
     </qresource>
     <qresource prefix="/Icon">
         <file>Image/led_off.png</file>
@@ -18,5 +21,8 @@
         <file>Image/thermometer.png</file>
         <file>Image/Emulator.png</file>
         <file>Image/Refresh.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>music/buzzer.wav</file>
     </qresource>
 </RCC>
