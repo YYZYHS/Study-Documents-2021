@@ -2,7 +2,7 @@
 #define EMULATOR_H
 
 #include <QDialog>
-
+#include <QtMultimedia/QSound>
 namespace Ui {
 class Emulator;
 }
@@ -15,6 +15,7 @@ public:
     explicit Emulator(QDialog *parent = nullptr);
     ~Emulator();
     QString GetTemperature();
+    QSound *buzzer = new QSound(":/music/music/buzzer.wav");
 
 private slots:
     void on_pushButton_3_clicked();
@@ -26,6 +27,10 @@ private slots:
 
     void LED_on();
     void LED_off();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
 
 signals:
     void mainwindowclose();

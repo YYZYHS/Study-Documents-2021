@@ -9,7 +9,6 @@
 #include "Emulator.h"
 #include "ui_Emulator.h"
 #include <QtMultimedia/QSound>
-#include <QElapsedTimer>
 
 class Login;
 class Register;
