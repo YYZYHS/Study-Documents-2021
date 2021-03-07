@@ -7,6 +7,7 @@ Emulator::Emulator(QDialog *parent) :
     ui(new Ui::Emulator)
 {
     ui->setupUi(this);
+    setMouseTracking(true);
 }
 
 Emulator::~Emulator()
@@ -49,6 +50,32 @@ void Emulator::LED_on()
     QPixmap ledon = QPixmap(":/Image/Image/led-on.png");
     ui->LED->setPixmap(ledon);
     m.ledstatu = 0;
+
+    //////////////应该烧入板子的程序/////////////////
+//    int on;
+//    int led_no;
+//    int fd;
+//    /* 检查 led 控制的两个参数，如果没有参数输入则退出。*/
+//    if (argc != 3 || sscanf(argv[1], "%d", &led_no) != 1 || sscanf(argv[2],"%d", &on) != 1 ||on < 0 || on >  || led_no < 0 || led_no > 3)
+//    {
+//        fprintf(stderr, "Usage: leds led_no 0|1\n");
+//        exit(1);
+//    }
+//    /*打开/dev/leds 设备文件*/
+//    fd = open("/dev/leds0", 0);
+//    if (fd < 0)
+//    {
+//        fd = open("/dev/leds", 0);
+//    }
+//    if (fd < 0)
+//    {
+//        perror("open device leds");
+//        exit(1);
+//    }
+//    /*通过系统调用 ioctl 和输入的参数控制 led*/
+//    ioctl(fd, on, led_no);
+//    /*关闭设备句柄*/
+//    close(fd); return 0;
 }
 
 void Emulator::LED_off()
@@ -86,16 +113,43 @@ void Emulator::on_pushButton_4_clicked()
 
 }
 
-void Emulator::on_pushButton_7_clicked()
-{
-    //结束模拟
-
-}
 void Emulator::Beep_on()
 {
     buzzer->setLoops(100);
     buzzer->play();
     m.beepstatu = 0;
+
+
+    //////////////////////应该烧入板子的程序///////////////////
+//    int freq = 1000 ;
+//        open_buzzer();
+//        printf( "\nBUZZER TEST ( PWM Control )\n" );
+//        printf( "Press +/- to increase/reduce the frequency of the BUZZER\n" ) ;
+//        printf( "Press 'ESC' key to Exit this program\n\n" );
+//        while( 1 )
+//        {
+//            int key;
+//            set_buzzer_freq(freq);
+//            printf( "\tFreq = %d\n", freq );
+//            key = getch();
+//            switch(key)
+//            {
+//            case '+':
+//                if( freq < 20000 )
+//                    freq += 10;
+//                break;
+//            case '-':
+//                if( freq > 11 )
+//                    freq -= 10 ;
+//                break;
+//            case ESC_KEY:
+//            case EOF:
+//                stop_buzzer();
+//                exit(0);
+//            default:
+//                break;
+//            }
+//        }
 }
 void Emulator::Beep_off()
 {
@@ -112,4 +166,43 @@ void Emulator::on_pushButton_2_clicked()
     emit MainWindowBeepOff();
     emit MainWindowLedOff();
 
+}
+
+void Emulator::on_pushButton_4_clicked(bool checked)
+{
+    if(checked)
+        ui->pushButton_4->setText("结束模拟");
+    else
+        ui->pushButton_4->setText("模拟警戒");
+    a = checked;
+    qDebug()<<a;
+}
+
+void Emulator::mouseMoveEvent(QMouseEvent *event)
+{
+    if(a)
+    {//按住鼠标左键移动到下面的范围中时，系统会报警，再移出去则接触报警
+        if(event->x()>=80&&event->x()<=780)
+            if(event->y()>=390&&event->y()<=560)
+            {
+                emit MainwindowBeepOn();
+                Beep_on();
+            }
+            else
+            {
+                emit MainWindowBeepOff();
+                Beep_off();
+            }
+        else
+        {
+            emit MainWindowBeepOff();
+            Beep_off();
+        }
+
+    }
+    else
+    {
+        emit MainWindowBeepOff();
+        Beep_off();
+    }
 }

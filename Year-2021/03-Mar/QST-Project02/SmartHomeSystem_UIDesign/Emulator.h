@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtMultimedia/QSound>
+#include <QMouseEvent>
 #include "Login.h"
 namespace Ui {
 class Emulator;
@@ -37,9 +38,9 @@ private slots:
 
     void on_pushButton_4_clicked();
 
-    void on_pushButton_7_clicked();
-
     void on_pushButton_2_clicked();
+
+    void on_pushButton_4_clicked(bool checked);
 
 signals:
     void mainwindowclose();
@@ -51,6 +52,10 @@ signals:
 
 private:
     Ui::Emulator *ui;
+    QPoint offset;//鼠标与窗口相对位置的差值
+    bool a;
+protected:
+    void mouseMoveEvent(QMouseEvent *event);//鼠标移动事件
 };
 
 #endif // EMULATOR_H

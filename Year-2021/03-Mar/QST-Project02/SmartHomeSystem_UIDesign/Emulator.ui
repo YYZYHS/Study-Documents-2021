@@ -274,6 +274,9 @@
      <enum>QFrame::Plain</enum>
     </property>
     <widget class="QFrame" name="frame_10">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -356,12 +359,8 @@
        <property name="text">
         <string>模拟警戒</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="text">
-        <string>模拟结束</string>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
