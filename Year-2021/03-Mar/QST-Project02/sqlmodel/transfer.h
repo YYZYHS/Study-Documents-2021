@@ -1,6 +1,6 @@
 #ifndef TRANSFER_H
 #define TRANSFER_H
-#include "Message.h"
+#include "message.h"
 #include <QByteArray>
 #include <QDataStream>
 #include <QDateTime>
@@ -33,7 +33,7 @@ public:
     QByteArray sendmessage(MessageType type,message m);
     //解码
     void receivemessage(QByteArray data,message m);
-
+    message m;
 };
 
 #endif // TRANSFER_H

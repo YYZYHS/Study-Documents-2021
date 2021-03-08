@@ -2,11 +2,14 @@
 #include "ui_mainwindow.h"
 #include <QPixmap>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->Feedback->document()->setMaximumBlockCount(100);
     QPixmap pixmap = QPixmap(":/Image/Image/background3.jpg").scaled(this->size());
     QPalette palette(this->palette());
     palette.setBrush(QPalette::Background,QBrush(pixmap));
@@ -86,68 +89,56 @@ void MainWindow::Upload()
     socket = new QTcpSocket(this);
     //连接
     socket->connectToHost(m.IPAddr,m.port);
+    socket->waitForConnected(30000);
     //接收信息
-    connect(socket,SIGNAL(readyRead()),this,SLOT(ReceiveMessage()));
+    connect(socket,SIGNAL(readyRead()),this,SLOT(Receivemessage()));
 }
 
 void MainWindow::Receivemessage()
 {
     QByteArray arr = socket->readAll();
-    t.receivemessage(arr,m);
-    switch (m.CO)
-    {
-    case 0:
-    {
-        //led灯控制
-        if(!m.command)
-        {
-            //开灯
-            emit led_on();
-            ui->toolButton->setChecked(1);
-        }
-        else
-        {
-            //关灯
-            emit led_off();
-            ui->toolButton->setChecked(0);
-        }
-        break;
+    QString str = arr.data();
 
-    }
-    case 1:
+    if(str == "00")
     {
-        if(!m.command)
-        {
-            //开警报器
-            emit beep_on();
-            ui->pushButton_4->setChecked(1);
-        }
-        else
-        {
-            //关警报器
-            emit beep_off();
-            ui->pushButton_4->setChecked(0);
-        }
-        //beep蜂鸣器控制
-        break;
-
+        //开灯
+         emit led_on();
+         ui->toolButton->setChecked(1);
     }
-    case 2:
+    else if(str == "01")
+    {
+        //关灯
+        emit led_off();
+        ui->toolButton->setChecked(0);
+    }
+    else if(str == "10")
+    {
+        //开警报器
+        emit beep_on();
+        ui->pushButton_4->setChecked(1);
+    }
+    else if(str == "11")
+    {
+        //关警报器
+        emit beep_off();
+        ui->pushButton_4->setChecked(0);
+    }
+    else if(str == "20")
     {
         emit getstatus();//temp温度计数值获取（设置为全部状态获取）
-        Sendmessage(GetStatus,m);
-        break;
+        Sendmessage(getInfo());
+    }
+    else
+    {
+        qDebug()<<"error";
     }
 
-    }
 }
 
-void MainWindow::Sendmessage(MessageType type,message m)
+void MainWindow::Sendmessage(QString q)
 {
-    QByteArray temp=t.sendmessage(type,m);
-    //socket->write(data,data.length());
-    socket->write(temp);
-    //socket->write(data.toUtf8().data(),strlen(data.toUtf8().data()));
+    QString str = q;
+    socket->write(str.toUtf8());
 }
 
 void MainWindow::ChangeBeepBtntrue()
@@ -160,14 +151,16 @@ void MainWindow::ChangeBeepBtnfalse()
     ui->pushButton_4->setChecked(0);
 }
 
-void MainWindow::getInfo()
+QString MainWindow::getInfo()
 {
     QString LED = "关",BEEP = "关";
     if(!m.ledstatu) LED = "开";
     if(!m.beepstatu) BEEP = "开";
     int TEMP = m.temp;
     QString text = QString("当前LED状态：%1\n蜂鸣器状态：%2\n温度计数值：%3℃").arg(LED).arg(BEEP).arg(TEMP);
-    ui->Feedback->setText(text);
+    //ui->Feedback->setText(text);
+    ui->Feedback->append(text);
+    return text;
 }
 
 void MainWindow::on_pushButton_6_clicked()
@@ -221,4 +214,12 @@ void MainWindow::ChangeInfo()
 void MainWindow::ChangeLedBtnfalse()
 {
     ui->toolButton->setChecked(0);
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+//    QByteArray temp = QByteArray("sssss");
+//    socket->write(temp);
+    QString str = ui->Commend->text();
+    Sendmessage(str);
 }

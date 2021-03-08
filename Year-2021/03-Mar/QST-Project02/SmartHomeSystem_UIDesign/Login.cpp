@@ -29,6 +29,7 @@ void Login::on_buttonBox_accepted()
     qDebug()<<"OK";
     this->hide();
     qDebug()<<"OK";
+
 }
 
 void Login::on_buttonBox_rejected()

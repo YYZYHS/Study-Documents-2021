@@ -1,4 +1,4 @@
-#include "Transfer.h"
+#include "transfer.h"
 
 
 Transfer::Transfer()
@@ -24,7 +24,6 @@ QByteArray Transfer::sendmessage(MessageType type,message m)
     }
 
     default:qDebug()<<"error";
-        break;
     }
     return data;
 }

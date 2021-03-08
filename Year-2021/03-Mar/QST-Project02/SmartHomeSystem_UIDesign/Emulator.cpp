@@ -37,10 +37,10 @@ void Emulator::on_horizontalSlider_valueChanged(int value)
 
 void Emulator::on_pushButton_clicked()
 {
-//    int temperature = ui->spinBox->value();
-//    //QString text ="当前温度："<<temperature<<"℃"；
-//    QString text = QString("当前温度：%1℃").arg(temperature);
-//    ui->label_3->setText(text);
+    int temperature = ui->spinBox->value();
+    //QString text ="当前温度："<<temperature<<"℃"；
+    QString text = QString("当前温度：%1℃").arg(temperature);
+    ui->label_3->setText(text);
     emit getstatus();
 }
 

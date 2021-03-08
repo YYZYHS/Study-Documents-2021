@@ -10,17 +10,19 @@
 #include "ui_Emulator.h"
 #include <QtMultimedia/QSound>
 #include "Message.h"
-#include "Transfer.h"
+#include <string.h>
 
 
 #include <QtNetwork>
 #include <QAbstractSocket>
+#include <QByteArray>
 
 
 
 class Login;
 class Emulator;
 class Transfer;
+class QTcpSocket;
 
 namespace Ui {
 class MainWindow;
@@ -36,7 +38,6 @@ public:
     Emulator e;
     Login login;
     QTcpSocket *socket;
-    Transfer t;
     ~MainWindow();
 
 
@@ -55,18 +56,20 @@ private slots:
 
     void Receivemessage();
 
-    void Sendmessage(MessageType type,message m);
+    void Sendmessage(QString q);
 
     void ChangeBeepBtntrue();
     void ChangeBeepBtnfalse();
 
-    void getInfo();
+    QString getInfo();
 
     void on_pushButton_6_clicked();
 
     void ChangeInfo();
 
     void ChangeLedBtnfalse();
+
+    void on_pushButton_7_clicked();
 
 signals:
     void led_on();
